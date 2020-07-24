@@ -201,10 +201,10 @@ def zfs_name(path):
 
 
 def zfs_poolname():
-    poolname = zfs_parse_output(['zfs', 'list', '-H', '/'])
+    poolname = zfs_parse_output(['zfs', 'list', '-H', '-d', '0'])
     if len(poolname) == 0:
         raise ValueError('Not a ZFS root')
-    poolname = poolname[0][0].split('/')[0]
+    poolname = poolname[0][0]
     return poolname
 
 
